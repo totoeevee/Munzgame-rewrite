@@ -103,6 +103,7 @@ M.registerCommand(new Command("create", "Create a new save" , ()=>{
 	document.cookie = "level = 1";
 	document.cookie = "XP = 0";
 	document.cookie = "prestige = 0";
+	document.cookie = "path=/;";
 	console.push("You created something.")
 }))
 
@@ -153,6 +154,8 @@ M.registerCommand(new Command("gamble", "do some funny gambling" , ()=>{
 	else if (thing == "quarter"){
 		thing  = Math.round(parseInt(money)/4)
 	}
+
+	
 	if (parseInt(thing)>money || parseInt(thing) <=0){
 		console.push("Not enough money, or you tried a negative number")
 	}

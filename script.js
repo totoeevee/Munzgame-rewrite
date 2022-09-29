@@ -177,7 +177,7 @@ M.registerCommand(new Command("gamble", "do some funny gambling" , ()=>{
 			console.push("You won "+ parseInt(winnings)+"!")
 		}
 		if (you==house){
-			money+=thing
+			parseInt(money)+=parseInt(thing)
 			console.push("You tied. Your money has been refunded")
 		}
 		if (you<house){

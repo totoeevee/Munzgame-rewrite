@@ -50,6 +50,11 @@ function runCommand() {
   }
   document.getElementById("console").innerHTML = consoleString;
 
+
+	var money = getCookie("money")
+	if (money == NaN){
+		money = 0
+	}
 	
 //xp gain
 	var xp = parseInt(getCookie("XP"))
@@ -136,9 +141,23 @@ M.registerCommand(new Command("username", "Set your username" , ()=>{
 M.registerCommand(new Command("gamble", "do some funny gambling" , ()=>{
 	var multi = parseFloat(getCookie("multiplier"));
 	var money =  parseInt(getCookie("money"))
-	var thing = parseInt(prompt("How much money to gamble?"))
-	if (thing>money || thing <=0){
+	var prestige = parseInt(getCookie("prestige"))
+	var thing = prompt("How much money to gamble?")
+	if (thing == "all"){
+			thing = money
+	}
+	else if (thing == "half"){
+		thing  = Math.round(parseInt(money)/2)
+	}
+
+	else if (thing == "quarter"){
+		thing  = Math.round(parseInt(money)/4)
+	}
+	if (parseInt(thing)>money || parseInt(thing) <=0){
 		console.push("Not enough money, or you tried a negative number")
+	}
+	else if (parseInt(thing) == "NaN"){
+		console.push("oy!")
 	}
 	else{
 		money-=thing
@@ -146,8 +165,13 @@ M.registerCommand(new Command("gamble", "do some funny gambling" , ()=>{
 		you = Math.floor(Math.random()*12)+1
 		console.push("You: "+you+", House: "+house)
 		if (you>house){
-			money+=thing*2*multi
-			console.push("You won "+ parseInt(thing*2*multi)+"!")
+			var winnings=thing*2*multi/(prestige+1)
+			if (winnings>1000000){
+				winnings = 1000000
+			}
+			money+=winnings
+			
+			console.push("You won "+ parseInt(winnings)+"!")
 		}
 		if (you==house){
 			money+=thing
@@ -164,11 +188,11 @@ M.registerCommand(new Command("gamble", "do some funny gambling" , ()=>{
 //guess
 M.registerCommand(new Command("guess", "do a guessing game to earn some money", ()=>{
 	var multi = parseFloat(getCookie("multiplier"));
-	const number = Math.floor(Math.random()*5)+1;
-	guess = prompt("Guess a number between 1 and 5");
+	const number = Math.floor(Math.random()*10)+1;
+	guess = prompt("Guess a number between 1 and 10");
 	if (guess == number){
-		console.push("You won "+ 200*multi+" money.")
-		money +=200*multi
+		console.push("You won "+ parseInt(5000*multi)+" money.")
+		money +=parseInt(7500*multi)
 	}
 	if (guess!=number){
 		console.push("You lost.")
@@ -180,7 +204,7 @@ M.registerCommand(new Command("guess", "do a guessing game to earn some money", 
 //prestige
 M.registerCommand(new Command("prestige", "get enough money to prestige for a multi bonus", ()=>{
 	var prestige = getCookie("prestige")
-	var pcoin = 10000*((prestige+1)*1.3)
+	var pcoin = parseInt(10000*( (prestige+1) *1.792674));;
 	var money =  parseInt(getCookie("money"))
 	var multi = parseFloat(getCookie("multiplier"));
 	if (pcoin<=money){
@@ -203,7 +227,7 @@ M.registerCommand(new Command("prestige", "get enough money to prestige for a mu
 //level
 M.registerCommand(new Command("level", "shows you XP, your level, and more", ()=>{
 	var prestige = getCookie("prestige");
-	var pcoin = 10000*( (prestige+1) *1.3);
+	var pcoin = parseInt(10000*( (prestige+1) *1.792674));
 	var money =  parseInt(getCookie("money"));
 	var xp = parseInt(getCookie("XP"));
 	var level = parseInt(getCookie("level"));

@@ -2,27 +2,30 @@
 <html>
 
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto&display=swap" rel="stylesheet">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Munzgame rewrite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Munzgame</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
-  <p id="help"></p>
+  <link rel="icon" type="image/icon" href="ccIcon.png" />
 </head>
 
 <body>
-  <div id="yee"></div>
-  <div class="fixed">
-    <p id="mainp"></p>
+  <div id="game">
+    <div id="panels">
+    </div>
+    <div id="consoleContainer">
+      <p id="console">
 
-    <input type="text" id="frm1" bottom="10px" autocomplete="off">
-    <br>
+      </p>
+			<p id  = bottom></p>
+      <div id="inputContainer">
+        ><input autocomplete="off" maxlength="99999" id="commandInput" />
+      </div>
+    </div>
   </div>
-
   <script src="script.js"></script>
-  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
 </body>
 
 </html>

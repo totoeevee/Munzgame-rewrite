@@ -1,20 +1,71 @@
-body {
-  font-family: 'Inconsolata', monospace;
-  background-color:black;
-  color:lime;
-  text-align:left;
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+
+html {
+    background-color: #111111;
+    color: #48e70d;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
 }
-div.fixed {
-  position: fixed;
-  width: 90%;
-  bottom: 10%;
-	left: 5%;
-  border: 3px solid #000000;
+
+#loading {
+    text-align: center;
 }
-#frm1 {
-  background-color: black;
-  color: white;
-  border: 2px solid white;
-  border-radius: 2px;
-  width: 100%;
+
+#commandInput {
+    width: 90%;
+    font-family: 'Source Code Pro', monospace;
+}
+
+#consoleContainer {
+    padding: 5px;
+    background-color: black;
+}
+
+#panels {
+    min-height: 5rem;
+    max-height: 500rem;
+    background-color: #0d0d0d;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.panel {
+    vertical-align: top;
+    display: inline-block;
+    white-space: nowrap;
+    background-color: #050505;
+    padding: 6px;
+    margin: 0px;
+    margin-right: 4px;
+    max-height: 14.2rem;
+    max-width: 40%;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+#console {
+    min-height: 50rem;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+#commandInput {
+    background-color: black;
+    color: white;
+    border: gray solid 1px;
+}
+
+#settings {
+    margin: 5px;
+}
+
+select {
+    font-family: 'Source Code Pro', monospace;
+}
+
+option {
+    font-family: 'Source Code Pro', monospace;
+    background: black;
 }
